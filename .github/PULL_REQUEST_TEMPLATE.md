@@ -1,17 +1,43 @@
-# Выполнено ДЗ №
+# Выполнено ДЗ № 1
 
- - [ ] Основное ДЗ
- - [ ] Задание со *
+ - [x] Основное ДЗ
+ - [x] Задание со *
 
 ## В процессе сделано:
- - Пункт 1
- - Пункт 2
+ - Установлен kubctl
+ - Установлен Minikube
+ - Установлен Kubernetes Dashboard
+ - Проверен k9s
+ - Проверенны основные комманды kubectl
+ - Настроен Deployment core-dns
+ - Собран docker образ и помещен в публичный репозиторий
+ - Создан манифест для запуска web сервера и расшраен volume с init контейнером
+ - Установлен kube-forwarder
+ - Собран образ сервиса frontend приложения Hipster Shop
+ - Произведенна попытка запуска frontend сервиса на k8s
+ - Исправлен манифест для запуска сервиса frontend
 
 ## Как запустить проект:
- - Например, запустить команду X в директории Y
+ - Первый сервис:
+ ```bash
+kubectl apply -f web-pod.yaml
+kubectl port-forward --address 0.0.0.0 pod/web 8000:8000
+ ```
+ - Сервис frontend приложения Hipster Shop
+ ```bash
+ kubectl apply -f frontend-pod.yaml
+ ```
+  - Исправленый манифест сервиса frontend
+ ```bash
+ kubectl apply -f frontend-pod-healthy.yaml
+ ```
 
 ## Как проверить работоспособность:
- - Например, перейти по ссылке http://localhost:8080
+ - Перейти по ссылке http://localhost:8000 для проверки первого сервиса 
+ - Проверить сервис frontend и его исправленную версию можно командой:
+  ```bash
+kubectl apply -f frontend-pod-healthy.yaml
+ ```
 
 ## PR checklist:
- - [ ] Выставлен label с номером домашнего задания
+ - [x] Выставлен label с номером домашнего задания
