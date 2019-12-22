@@ -41,3 +41,4 @@ kubectl apply -f frontend-pod-healthy.yaml
 
 ## PR checklist:
  - [x] Выставлен label с номером домашнего задания
+ 
