@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: payment
+    name: paymentservice
     labels:
-        app: payment
+        app: paymentservice
 spec:
     replicas: 3
     selector:
         matchLabels:
-            tier: payment
+            tier: paymentservice
     template:
         metadata:
             labels:
-                app: payment
-                tier: payment
+                app: paymentservice
+                tier: paymentservice
         spec:
             containers:
             - name: server
-              image: kystkysto/paymentservice:v0.0.1
+              image: kystkysto/paymentservice:v0.0.2
