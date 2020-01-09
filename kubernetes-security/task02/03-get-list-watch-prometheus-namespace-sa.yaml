@@ -15,7 +15,7 @@ metadata:
   namespace: prometheus
 subjects:
 - kind: ServiceAccount
-  name: get-list-watch-pod
+  name: carol
   namespace: prometheus
 roleRef:
     kind: ClusterRole
