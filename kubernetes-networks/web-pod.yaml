@@ -18,6 +18,8 @@ spec:
         httpGet: # веб-сервера отдавать
           path: /index.html # контент
           port: 80
+      livenessProbe:
+        tcpSocket: { port: 8000 }
     initContainers:
     - image: busybox:1.31.0
       name: init-app
