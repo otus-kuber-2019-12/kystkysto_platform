@@ -1,30 +1,37 @@
 # Выполнено ДЗ № 3
 
  - [x] Основное ДЗ
+ - [ ] ДЗ со звездочкой
 
 ## В процессе сделано:
- - Создан Service Account bob, который связан с кластерной ролью admin
- - Создан Service Account dave без доступа к кластеру
- - Создан Namespace prometheus
- - Создан Service Account carol в Namespace prometheus
- - Создана кластерная роль get-list-watch-pod и связанна со всеми Service Account в Namesspace prometheus
- - Создан Namespace dev
- - Создан Service Account jane
- - Service Account jane связан с ролью admin
- - Создан Service Account ken
- - Cвязанн Service Account ken и роль view
+ - Добавлена проверкпа в манифеста web пода readinessProbe
+ - Добавлена проверкпа в манифеста web пода livenessProbe
+ - Проверка будет всегда валидна. Можно использовать подобную проверку, только чтобы убедиться, что процесс запущен.
+ - Создан Deployment для сервиса web
+ - Исправлен Deployment для сервиса web
+ - Проведены эксперементы со стратегиями Deployment сервиса web
+ - Создан Service web-svc-cip с типом ClusterIP
+ - Включен IPVS на кластере
+ - Установлен ipvsadm
+ - Установле ipset
+ - Установлен MetalLB
+ - Создан манифест metallb-config.yaml
+ - Создан web-svc-lb LoadBalancer
+ - Добавлен маршрут в ОС на IP-адрес Minikube
+ - Установлен ingress-nginx
+ - Создан манифест nginx-lb LoadBalancer
+ - Создан headless ClusterIP web-svc-headless
+ - Создан манифест web-ingress с правилами для Ingress
 
 ## Как запустить проект:
  - Необходимо поочередно применить все манифесты:
  ```bash
- kubectl apply -f <имя файла содержащего>
+ kubectl apply -f <имя файла содержащего манифест>
  ```
 
 ## Как проверить работоспособность:
- - Необходимо проверить все созданные привязки ролей:
- ```bash
-kubectl get clusterrolebinding <имя биндинга> -o yaml
- ```
+ - Можно использовать kubespy и отслеживать изменения.
+ - Пинговать ip кластера и запрашивать 80 порты для проверки доступноcти http
 
 ## PR checklist:
  - [x] Выставлен label с номером домашнего задания
