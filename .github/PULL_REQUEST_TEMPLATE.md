@@ -1,18 +1,12 @@
-# Выполнено ДЗ № 3
+# Выполнено ДЗ № 4
 
  - [x] Основное ДЗ
+ - [x] ДЗ со звездочкой
 
 ## В процессе сделано:
- - Создан Service Account bob, который связан с кластерной ролью admin
- - Создан Service Account dave без доступа к кластеру
- - Создан Namespace prometheus
- - Создан Service Account carol в Namespace prometheus
- - Создана кластерная роль get-list-watch-pod и связанна со всеми Service Account в Namesspace prometheus
- - Создан Namespace dev
- - Создан Service Account jane
- - Service Account jane связан с ролью admin
- - Создан Service Account ken
- - Cвязанн Service Account ken и роль view
+ - Создан minio StatefulSet
+ - Создан minio HeadlessService
+ - Добавлен Secret для хранения доступов к БД
 
 ## Как запустить проект:
  - Необходимо поочередно применить все манифесты:
@@ -21,9 +15,13 @@
  ```
 
 ## Как проверить работоспособность:
- - Необходимо проверить все созданные привязки ролей:
+ - Необходимо проверить настройку следующими командами:
  ```bash
-kubectl get clusterrolebinding <имя биндинга> -o yaml
+kubectl get statefulsets
+kubectl get pods
+kubectl get pvc
+kubectl get pv
+kubectl describe <resource> <resource_name>
  ```
 
 ## PR checklist:
