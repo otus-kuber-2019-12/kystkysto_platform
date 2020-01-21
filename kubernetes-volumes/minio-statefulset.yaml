@@ -1,3 +1,13 @@
+apiVersion: v1
+data:
+  password.txt: bWluaW8xMjM=
+  username.txt: bWluaW8=
+kind: Secret
+metadata:
+  name: db-user-pass
+  namespace: default
+type: Opaque
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
