@@ -231,10 +231,10 @@ ingress:
 ## Must be provided if Ingress is enabled
 ##
   hosts:
-    - name: chartmuseumv2.34.89.193.23.nip.io
+    - name: chartmuseumv2.35.204.213.120.nip.io
       path: /
       tls: true
-      tlsSecret: chartmuseumv2.34.89.193.23.nip.io
+      tlsSecret: chartmuseumv2.35.204.213.120.nip.io
 
 #      ## Set this to true in order to enable TLS on the ingress record
 #      tls: true
