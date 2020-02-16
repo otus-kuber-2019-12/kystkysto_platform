@@ -1,0 +1,11 @@
+notary:
+  enabled: false
+expose:
+  ingress:
+    hosts:
+      core: harbor.35.184.83.177.xip.io
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+      certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
+    tls: true
