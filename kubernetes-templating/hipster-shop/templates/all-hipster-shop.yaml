@@ -285,6 +285,7 @@ spec:
     port: 5000
     targetPort: 8080
 
+
 # paymentservice
 ---
 apiVersion: apps/v1

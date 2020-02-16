@@ -1,2 +1,2 @@
 #!/bin/bash
-helm repo add templating <Ссылка на ваш репозиторий>
+helm repo add templating https://harbor.35.184.83.177.xip.io/

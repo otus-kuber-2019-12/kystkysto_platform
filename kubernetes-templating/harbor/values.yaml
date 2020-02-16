@@ -3,7 +3,7 @@ notary:
 expose:
   ingress:
     hosts:
-      core: harbor.34.65.83.94.nip.io
+      core: harbor.35.184.83.177.xip.io
     annotations:
       kubernetes.io/ingress.class: nginx
       kubernetes.io/tls-acme: "true"
