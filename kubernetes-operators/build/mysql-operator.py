@@ -39,8 +39,7 @@ def delete_success_jobs(mysql_instance_name):
 # Функция, которая будет запускаться при создании объектов тип MySQL:
 def mysql_on_create(body, spec, **kwargs):
     name = body['metadata']['name']
-    image = body['spec']['image'] # cохраняем в переменные содержимое описания MySQL
-    из CR
+    image = body['spec']['image'] # cохраняем в переменные содержимое описания MySQL из CR
     password = body['spec']['password']
     database = body['spec']['database']
     storage_size = body['spec']['storage_size']
@@ -50,7 +49,8 @@ def mysql_on_create(body, spec, **kwargs):
     persistent_volume_claim = render_template('mysql-pvc.yml.j2', {'name': name, 'storage_size': storage_size})
     service = render_template('mysql-service.yml.j2', {'name': name})
     deployment = render_template('mysql-deployment.yml.j2', {'name': name, 'image': image, 'password': password, 'database': database})
-
+    restore_job = render_template('restore-job.yml.j2', {'name': name, 'image': image, 'password': password, 'database': database})
+    
     # Определяем, что созданные ресурсы являются дочерними к управляемому CustomResource:
     kopf.append_owner_reference(persistent_volume, owner=body)
     kopf.append_owner_reference(persistent_volume_claim, owner=body)  # addopt
@@ -70,7 +70,7 @@ def mysql_on_create(body, spec, **kwargs):
     # Создаем mysql Deployment:
     api = kubernetes.client.AppsV1Api()
     api.create_namespaced_deployment('default', deployment)
-    
+
     # Пытаемся восстановиться из backup
     try:
         api = kubernetes.client.BatchV1Api()
