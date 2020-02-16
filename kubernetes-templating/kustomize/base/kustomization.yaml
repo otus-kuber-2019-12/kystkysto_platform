@@ -1,0 +1,4 @@
+resources:
+- checkoutservice-namespace.yaml
+- checkoutservice-deployment.yaml
+- checkoutservice-service.yaml
