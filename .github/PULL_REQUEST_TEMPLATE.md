@@ -1,14 +1,20 @@
-# Выполнено ДЗ № 4
+# Выполнено ДЗ № 8
 
  - [x] Основное ДЗ
- - [x] ДЗ со звездочкой
+ - [ ] ДЗ со звездочкой
 
 ## В процессе сделано:
- - Создан minio StatefulSet
- - Создан minio HeadlessService
- - Добавлен Secret для хранения доступов к БД
+ - Собран docker образ с nginx
+ - Prometheus operator установлен через helm 3
+ - Написан Deployment для образа deocker c nginx и nginx exporter
+ - Написан Service для nginx
+ - Написан Service Monitor для nginx
 
 ## Как запустить проект:
+ - Установка prometheus-operator
+ ```bash
+ kubectl create ns monitoring | helm install monitoring stable/prometheus-operator -n monitoring
+ ```
  - Необходимо поочередно применить все манифесты:
  ```bash
  kubectl apply -f <имя файла содержащего манифест>
